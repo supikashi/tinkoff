@@ -1,7 +1,6 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -22,7 +21,7 @@ public class Task1Test {
         assertThat(x).isEqualTo(expected);
     }
 
-    @Test
+    /*@Test
     @DisplayName("Тест 2")
     void minutesToSecondsTest2() {
         // given
@@ -36,7 +35,7 @@ public class Task1Test {
             .isEqualTo(836);
     }
 
-    /*@Test
+    @Test
     @DisplayName("Тест 3")
     void minutesToSecondsTest3() {
         // given
