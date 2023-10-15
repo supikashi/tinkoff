@@ -5,18 +5,20 @@ public class Task3 {
     private Task3() {
     }
 
-    @SuppressWarnings("MagicNumber") //
-    public static int countDigits(int input) {
-        int output = 1;
-        int powerOfTen = 10;
-        int num = input;
-        if (num < 0) { //не знаю надо ли было это делать
-            num *= -1;
+    public static boolean isNestable(int[] firstArray, int[] secondArray) {
+
+        int firstMax = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        int firstMin = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+        for (int i : firstArray) {
+            firstMax = Math.max(firstMax, i);
+            firstMin = Math.min(firstMin, i);
         }
-        while (powerOfTen <= num) {
-            powerOfTen *= 10;
-            output++;
+        for (int j : secondArray) {
+            secondMax = Math.max(secondMax, j);
+            secondMin = Math.min(secondMin, j);
         }
-        return output;
+        return secondMin < firstMin && firstMax < secondMax;
     }
 }

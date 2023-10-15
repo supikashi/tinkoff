@@ -5,12 +5,12 @@ public class Task2 {
     private Task2() {
     }
 
-    @SuppressWarnings("MagicNumber") //
+    @SuppressWarnings("MagicNumber") //мне кажется странным заводить константу для 10
     public static int countDigits(int input) {
         int output = 1;
         int powerOfTen = 10;
         int num = input;
-        if (num < 0) { //не знаю надо ли было это делать
+        if (num < 0) { //не знаю надо ли было это проверять
             num *= -1;
         }
         while (powerOfTen <= num) {

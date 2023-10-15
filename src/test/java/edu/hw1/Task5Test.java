@@ -5,17 +5,21 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Task1Test {
+public class Task5Test {
     @ParameterizedTest
-    @CsvSource({"01:00, 60", "13:56, 836", "10:60, -1",
-                "10:99, -1", "10:107, -1", "1000:10, 60010"})
-    @DisplayName("Task1Tests")
-    void minutesToSecondsTest(String input, int expected) {
+    @CsvSource({"11211230, true",
+        "13001120, true",
+        "23336014, true",
+        "11, true",
+        "9, false",
+        "124, false"})
+    @DisplayName("Task5Tests")
+    void isPalindromeDescendantTest(int input, boolean expected) {
         // given
         // input
 
         // when
-        int x = Task1.minutesToSeconds(input);
+        boolean x = Task5.isPalindromeDescendant(input);
 
         // then
         assertThat(x).isEqualTo(expected);

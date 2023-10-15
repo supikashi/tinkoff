@@ -5,17 +5,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Task1Test {
+public class Task4Test {
     @ParameterizedTest
-    @CsvSource({"01:00, 60", "13:56, 836", "10:60, -1",
-                "10:99, -1", "10:107, -1", "1000:10, 60010"})
-    @DisplayName("Task1Tests")
-    void minutesToSecondsTest(String input, int expected) {
+    @CsvSource({"123456, 214365",
+        "hTsii  s aimex dpus rtni.g, This is a mixed up string.",
+        "badce, abcde",
+        "q, q",
+        "ok, ko"})
+    @DisplayName("Task4Tests")
+    void fixStringTest(String input, String expected) {
         // given
         // input
 
         // when
-        int x = Task1.minutesToSeconds(input);
+        String x = Task4.fixString(input);
 
         // then
         assertThat(x).isEqualTo(expected);

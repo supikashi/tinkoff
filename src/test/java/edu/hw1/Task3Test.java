@@ -1,23 +1,77 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task3Test {
-    @ParameterizedTest
-    @CsvSource({"0, 1", "1, 1", "7, 1",
-        "1000, 4", "99, 2", "123456, 6"})
-    @DisplayName("Task2Tests")
-    void countDigitsTest(int input, int expected) {
+    @Test
+    @DisplayName("Test1")
+    void isNestableTest1() {
         // given
-        // input
+        int[] firstArray = {1, 2, 3, 4};
+        int[] secondArray = {0, 6};
 
         // when
-        int x = Task3.countDigits(input);
+        boolean x = Task3.isNestable(firstArray, secondArray);
 
         // then
-        assertThat(x).isEqualTo(expected);
+        assertThat(x).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("Test2")
+    void isNestableTest2() {
+        // given
+        int[] firstArray = {3, 1};
+        int[] secondArray = {4, 0};
+
+        // when
+        boolean x = Task3.isNestable(firstArray, secondArray);
+
+        // then
+        assertThat(x).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("Test3")
+    void isNestableTest3() {
+        // given
+        int[] firstArray = {9, 9, 8};
+        int[] secondArray = {8, 9};
+
+        // when
+        boolean x = Task3.isNestable(firstArray, secondArray);
+
+        // then
+        assertThat(x).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("Test4")
+    void isNestableTest4() {
+        // given
+        int[] firstArray = {1, 2, 3, 4};
+        int[] secondArray = {2, 3};
+
+        // when
+        boolean x = Task3.isNestable(firstArray, secondArray);
+
+        // then
+        assertThat(x).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("Test5")
+    void isNestableTest5() {
+        // given
+        int[] firstArray = {1};
+        int[] secondArray = {1};
+
+        // when
+        boolean x = Task3.isNestable(firstArray, secondArray);
+
+        // then
+        assertThat(x).isEqualTo(false);
     }
 }
