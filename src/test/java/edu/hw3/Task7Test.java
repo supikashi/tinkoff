@@ -8,8 +8,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task7Test {
     @Test
-    @DisplayName("Тест компаратора")
-    void ComparatorTest() {
+    @DisplayName("Тест компаратора 1")
+    void ComparatorTest1() {
         // given
         TreeMap<String, String> tree = new TreeMap<>(new TreeMapComparator());
 
@@ -20,4 +20,18 @@ public class Task7Test {
         assertThat(tree.containsKey(null)).isTrue();
     }
 
+    @Test
+    @DisplayName("Тест компаратора 2")
+    void ComparatorTest2() {
+        // given
+        TreeMap<String, String> tree = new TreeMap<>(new TreeMapComparator());
+
+        // when
+        tree.put("qwerty", "abc");
+        tree.put(null, "test");
+        tree.put("java", "int");
+
+        // then
+        assertThat(tree.firstKey()).isEqualTo(null);
+    }
 }
