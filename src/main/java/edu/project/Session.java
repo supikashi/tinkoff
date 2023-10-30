@@ -1,14 +1,15 @@
 package edu.project;
 
 import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 public class Session {
     private final int maxAttempts;
-    private int currentAttempt = 1;
+    private int usedAttempts = 0;
     private final String word;
     private final char[] currentWord;
 
-    public Session(String word, int maxAttempts) {
+    public Session(@NotNull String word, int maxAttempts) {
         this.maxAttempts = maxAttempts;
         this.word = word;
         currentWord = new char[word.length()];
@@ -19,12 +20,8 @@ public class Session {
         return maxAttempts;
     }
 
-    public int getCurrentAttempt() {
-        return currentAttempt;
-    }
-
-    public void nextAttempt() {
-        this.currentAttempt++;
+    public int getUsedAttempts() {
+        return usedAttempts;
     }
 
     public String getWord() {
@@ -35,15 +32,29 @@ public class Session {
         return new String(this.currentWord);
     }
 
-    public void successfulGuess(char letter) {
-        int i = 0;
-        do {
-            i = this.getWord().indexOf(letter, i);
-            if (i == -1) {
-                break;
-            }
-            currentWord[i] = letter;
-            i++;
-        } while (i < this.getWord().length());
+    public boolean guess(char letter) {
+        if (word.indexOf(letter) != -1) {
+            int i = 0;
+            do {
+                i = word.indexOf(letter, i);
+                if (i == -1) {
+                    break;
+                }
+                currentWord[i] = letter;
+                i++;
+            } while (i < word.length());
+            return true;
+        } else {
+            usedAttempts++;
+            return false;
+        }
+    }
+
+    public boolean thisIsVictory() {
+        return this.getCurrentWord().equals(word);
+    }
+
+    public boolean thisIsDefeat() {
+        return usedAttempts >= maxAttempts;
     }
 }
