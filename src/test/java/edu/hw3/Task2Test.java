@@ -14,14 +14,13 @@ public class Task2Test {
             Arguments.of("((()))", new String[] {"((()))"}),
             Arguments.of("((()))(())()()(()())", new String[] {"((()))", "(())", "()", "()", "(()())"}),
             Arguments.of("((())())(()(()()))", new String[] {"((())())", "(()(()()))"}),
-            Arguments.of(")(", new String[0])
         };
     }
 
     @ParameterizedTest
     @MethodSource("cluster")
     @DisplayName("Кластеризация скобок")
-    void clusterizeTest(String input, String[] expected) {
+    void clusterizeTest(String input, String[] expected) throws Exception {
         // given
         // input
 

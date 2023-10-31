@@ -1,6 +1,7 @@
 package edu.hw3;
 
 import edu.hw3.Task5.Contact;
+import edu.hw3.Task5.ContactsMethods;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -19,8 +20,8 @@ public class Task5Test {
                 new Contact[] {new Contact("Carl", "Gauss"), new Contact("Leonhard", "Euler"),
                     new Contact("Paul", "Erdos")}
             ),
-            Arguments.of(new String[] {"Aboba", "Bob", "Robert Anthony De Niro"}, "DESC",
-                new Contact[] {new Contact("Bob"), new Contact("Robert", "Anthony De Niro"), new Contact("Aboba")}
+            Arguments.of(new String[] {"Aboba", "Leonardo DiCaprio", "Bob", "Robert Anthony De Niro"}, "DESC",
+                new Contact[] {new Contact("Leonardo", "DiCaprio"), new Contact("Robert", "Anthony De Niro"), new Contact("Bob"), new Contact("Aboba")}
             ),
             Arguments.of(new String[0], "ASC", new Contact[0]),
             Arguments.of(null, "ASC", new Contact[0])
@@ -35,7 +36,7 @@ public class Task5Test {
         // input
 
         // when
-        Contact[] contacts = Contact.parseContacts(names, order);
+        Contact[] contacts = ContactsMethods.parseContacts(names, order);
 
         // then
         assertThat(contacts).isEqualTo(expected);

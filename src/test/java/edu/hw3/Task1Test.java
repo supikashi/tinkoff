@@ -18,7 +18,7 @@ public class Task1Test {
         // input
 
         // when
-        String str = Atbash.atbash(input);
+        String str = Atbash.encryptViaAtbash(input);
 
         // then
         assertThat(str).isEqualTo(expected);

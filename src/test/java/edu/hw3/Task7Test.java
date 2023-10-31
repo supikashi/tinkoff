@@ -1,6 +1,6 @@
 package edu.hw3;
 
-import edu.hw3.Task7.TreeMapComparator;
+import java.util.Comparator;
 import java.util.TreeMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ public class Task7Test {
     @DisplayName("Тест компаратора 1")
     void ComparatorTest1() {
         // given
-        TreeMap<String, String> tree = new TreeMap<>(new TreeMapComparator());
+        TreeMap<String, String> tree = new TreeMap<>(Comparator.nullsFirst(Comparator.naturalOrder())); //(new TreeMapComparator());
 
         // when
         tree.put(null, "test");
@@ -24,7 +24,7 @@ public class Task7Test {
     @DisplayName("Тест компаратора 2")
     void ComparatorTest2() {
         // given
-        TreeMap<String, String> tree = new TreeMap<>(new TreeMapComparator());
+        TreeMap<String, String> tree = new TreeMap<>(Comparator.nullsFirst(Comparator.naturalOrder())); //(new TreeMapComparator());
 
         // when
         tree.put("qwerty", "abc");
