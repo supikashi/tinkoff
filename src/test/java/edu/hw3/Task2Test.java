@@ -20,7 +20,7 @@ public class Task2Test {
     @ParameterizedTest
     @MethodSource("cluster")
     @DisplayName("Кластеризация скобок")
-    void clusterizeTest(String input, String[] expected) throws Exception {
+    void clusterizeTest(String input, String[] expected) {
         // given
         // input
 

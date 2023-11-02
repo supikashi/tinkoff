@@ -6,7 +6,7 @@ public class Cluster {
     private Cluster() {
     }
 
-    public static String[] clusterize(String str) throws Exception {
+    public static String[] clusterize(String str) {
         if (str == null) {
             return null;
         }
@@ -20,7 +20,7 @@ public class Cluster {
                 default -> 0;
             };
             if (cnt == -1 || (cnt == 0 && str.charAt(i) != ')')) {
-                throw new Exception("Wrong input");
+                throw new IllegalArgumentException("Wrong input");
             }
             sb.append(str.charAt(i));
             if (cnt == 0) {
