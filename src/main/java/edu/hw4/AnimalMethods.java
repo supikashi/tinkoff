@@ -1,8 +1,17 @@
 package edu.hw4;
 
-import org.jetbrains.annotations.NotNull;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
+import org.jetbrains.annotations.NotNull;
 
 public class AnimalMethods {
     private AnimalMethods() {
@@ -73,10 +82,12 @@ public class AnimalMethods {
             .toList();
     }
 
+    private static final int MIN_HEIGHT = 100;
+
     public static List<Animal> task11(@NotNull Collection<Animal> collection) {
         return collection.stream()
             .filter(Animal::bites)
-            .filter(x -> x.height() > 100)
+            .filter(x -> x.height() > MIN_HEIGHT)
             .toList();
     }
 
@@ -139,7 +150,49 @@ public class AnimalMethods {
             .orElse(null);
     }
 
-    //public static Map<String, Set<ValidationError>> Task19(Collection<Animal> collection) {
+    public static Map<String, Set<ValidationError>> task19(@NotNull Collection<Animal> collection) {
+        return collection.stream()
+            .collect(Collectors.toMap(Animal::name, AnimalMethods::getErrors));
+    }
 
-    //}
+    public static @NotNull Set<ValidationError> getErrors(Animal animal) {
+        Set<ValidationError> set = new TreeSet<>();
+        if (animal.name() == null) {
+            set.add(ValidationError.NULL_NAME);
+        } else if (animal.name().isEmpty()) {
+            set.add(ValidationError.EMPTY_NAME);
+        }
+        if (animal.type() == null) {
+            set.add(ValidationError.NULL_TYPE);
+        }
+        if (animal.sex() == null) {
+            set.add(ValidationError.NULL_SEX);
+        }
+        if (animal.age() < 0) {
+            set.add(ValidationError.NEGATIVE_AGE);
+        }
+        if (animal.height() < 0) {
+            set.add(ValidationError.NEGATIVE_HEIGHT);
+        }
+        if (animal.weight() < 0) {
+            set.add(ValidationError.NEGATIVE_WEIGHT);
+        }
+        return set;
+    }
+
+    public static Map<String, String> task20(@NotNull Collection<Animal> collection) {
+        return collection.stream().collect(Collectors.toMap(Animal::name, x -> toString(getErrors(x))));
+    }
+
+    public static String toString(@NotNull Set<ValidationError> errors) {
+        StringBuilder sb = new StringBuilder();
+        List<ValidationError> list = errors.stream().toList();
+        if (!list.isEmpty()) {
+            sb.append(list.get(0).getTitle());
+            for (int i = 1; i < list.size(); i++) {
+                sb.append(", " + list.get(i).getTitle());
+            }
+        }
+        return sb.toString();
+    }
 }
