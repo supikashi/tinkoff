@@ -104,9 +104,7 @@ public class Project2Test {
         cells[0] = new Cell[]{new Cell(), new Cell()};
         cells[1] = new Cell[]{new Cell(), new Cell(), new Cell()};
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Maze(cells);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Maze(cells));
 
     }
 
