@@ -1,4 +1,4 @@
-package edu.project;
+package edu.project1;
 
 public class GameRunner {
     private static final Dictionary DICTIONARY = new Dictionary();
