@@ -42,7 +42,8 @@ public class ConsoleWriter {
     public static void printMostPopularResponseCodes(List<Map.Entry<Integer, Integer>> data) {
         int maxLength = max(data.stream()
             .mapToInt(x -> x.getValue().toString().length())
-            .max().orElse(10), 10);
+            .max()
+            .orElse(10), 10);
         System.out.println("\n#### Коды ответа\n");
         System.out.printf("| %-3s | %-" + maxLength + "s |\n", "Код", "Количество");
         System.out.println("|-----|" + Strings.repeat("-", maxLength + 2) + "|");
